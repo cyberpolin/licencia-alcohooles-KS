@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 from reportlab.lib.units import inch
@@ -8,30 +8,33 @@ from datetime import date
 #//////////////////////////
 
 from .forms import AddLicenciatario
-form = AddLicenciatario()
+
+
 
 # Create your views here.
 def index(request):
-    latest_licenciatarios = list(Licenciatarios.objects.order_by('expedicion_fecha')[:5])
+    latest_licenciatarios = list(Licenciatarios.objects.order_by('-id'))
 
     for lic in latest_licenciatarios:
         # print(date.date(lic.expedicion_fecha))
         lic.status = lic.expedicion_fecha - date.today()
-        lic.print_url = '/licenciatarios/print/'+str(lic.pk)
+
 
     ctx = {
         'licenciatarios':latest_licenciatarios,
-        'form': form,
     }
     return render(request, 'licenciatarios/index.html', ctx)
 
-def print_licencia(request, id):
+def show_licencia(request, id):
+    return print_licencia(id)
+
+def print_licencia(id):
 
     l = Licenciatarios.objects.get(pk=id)
 
     # Create the HttpResponse object with the appropriate PDF headers.
     response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="licencia.pdf"'
+    response['Content-Disposition'] = 'inline; filename="%s.pdf"' % l.folio
 
     # Create the PDF object, using the response object as its "file."
     p = canvas.Canvas(response)
@@ -55,16 +58,40 @@ def print_licencia(request, id):
     p.drawString(0, 445, l.horario)
 
 
-    # p.drawString(50, 250, "Tacha de vigencia")
-
     p.drawString(250, 245, str(l.expedicion_fecha))
     p.drawString(250, 205, str(l.vencimiento_fecha))
 
 
     # Close the PDF object cleanly, and we're done.
     p.showPage()
+
     p.save()
-    from reportlab.pdfbase import pdfdoc
-    pdfdoc.PDFCatalog.OpenAction = '<</S/JavaScript/JS(this.print\({bUI:true,bSilent:false,bShrinkToFit:true}\);)>>'
 
     return response
+
+def licencia_nueva(request):
+
+    current_id = Licenciatarios.objects.latest('folio')
+    next_id = int(current_id.folio) + 1
+
+    ctx = {}
+    if request.method == 'POST':
+        form =  AddLicenciatario(request.POST)
+        if form.is_valid():
+            formResult = form.save()
+            pdf = print_licencia(current_id.pk)
+            return pdf
+        else:
+            return render(request, 'licenciatarios/add-licenciatario.html', {'form':form})
+    else:
+        ctx['form'] = AddLicenciatario()
+        ctx['title'] = 'Agrega un licenciatario'
+        return render(request, 'licenciatarios/add-licenciatario.html', ctx)
+
+
+def licencia_edit(request, id):
+    licenciatario = Licenciatarios.objects.get(pk=id)
+    ctx = {}
+    ctx['form'] = AddLicenciatario()
+    ctx['title'] = 'Editar un licenciatario'
+    return render(request, 'licenciatarios/add-licenciatario.html', ctx)

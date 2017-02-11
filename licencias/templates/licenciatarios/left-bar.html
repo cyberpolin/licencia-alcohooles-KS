@@ -1,0 +1,48 @@
+{% load staticfiles %}
+<!-- Main Sidebar start-->
+<aside data-mcs-theme="minimal-dark" class="main-sidebar mCustomScrollbar">
+  <div class="media user">
+    <div class="media-left">
+      <div id="esp-user-profile" data-percent="66" style="height: 56px; width: 56px; line-height: 40px; padding: 8px;" class="easy-pie-chart"><img src="{% static 'build/images/users/04.jpg' %}" alt="" class="avatar img-circle"></div>
+    </div>
+    <div style="overflow: visible" class="media-body media-middle">
+      <h4 class="media-heading fs-16">Juan Pech</h4>
+      <div class="dropdown"><a id="dropdown-status" href="javascript:;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" class="dropdown-toggle"><span class="status bg-success"></span> Opciones <span class="caret"></span></a>
+        <ul aria-labelledby="dropdown-status" class="dropdown-menu animated fadeInUp">
+          <li><a href="#">Configuración</a></li>
+          <li><a href="#">Salir</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <ul class="list-unstyled navigation mb-0">
+    <li class="sidebar-category">licenciatarios</li>
+    <li class="panel"><a role="button" data-toggle="collapse" data-parent=".navigation" href="#collapse1" aria-expanded="false" aria-controls="collapse1" class="active collapsed"><i class="ion-ios-home-outline bg-danger"></i><span class="sidebar-title">Inicio</span></a>
+      <ul id="collapse1" class="list-unstyled">
+        <li><a href="{% url 'licenciatarios:licencia-nueva' %}" type="button" data-target=".bs-example-modal-form" data-toogle='modal' class="active">Agregar</a></li>
+        <li><a href="#">Editar</a></li>
+        <li><a href="#" class="active">Eliminar</a></li>
+        <li><a href="#">Buscar</a></li>
+      </ul>
+    </li>
+    <li class="panel"><a role="button" data-toggle="collapse" data-parent=".navigation" href="#collapse2" aria-expanded="false" aria-controls="collapse2" class="collapsed"><i class="ion-ios-printer-outline bg-danger"></i><span class="sidebar-title">Reportes</span></a>
+      <ul id="collapse2" class="list-unstyled">
+        <li><a href="#">Hoy</a></li>
+        <li><a href="#">Noviembre</a></li>
+        <li><a href="#">Personalizado</a></li>
+      </ul>
+    </li>
+    <li class="sidebar-category">Sistema</li>
+    <li class="panel"><a role="button" data-toggle="collapse" data-parent=".navigation" href="#collapse20" aria-expanded="false" aria-controls="collapse20" class="collapsed"><i class="ion-ios-folder-outline bg-black"></i><span class="sidebar-title">Usuarios</span></a>
+      <ul id="collapse20" class="list-unstyled collapse">
+        <li><a role="button" data-toggle="collapse" data-parent="#collapse20" href="#collapse201" aria-expanded="false" aria-controls="collapse201" class="collapsed">agregar</a>
+        </li>
+        <li><a role="button" data-toggle="collapse" data-parent="#collapse20" href="#collapse201" aria-expanded="false" aria-controls="collapse201" class="collapsed">buscar</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+
+</aside>
+<!-- Main Sidebar end-->

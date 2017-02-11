@@ -1,359 +1,115 @@
+{% extends 'licenciatarios/base.html' %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Control de licencias de alcoholes</title>
-    <!-- PACE-->
-    <link rel="stylesheet" type="text/css" href="{% static 'plugins/PACE/themes/blue/pace-theme-flash.css' %}">
-    <script type="text/javascript" src="{% static 'plugins/PACE/pace.min.js' %}"></script>
-    <!-- Bootstrap CSS-->
-    <link rel="stylesheet" type="text/css" href="{% static 'plugins/bootstrap/dist/css/bootstrap.min.css' %}">
-    <!-- Ionicons-->
-    <link rel="stylesheet" type="text/css" href="{% static 'plugins/Ionicons/css/ionicons.min.css' %}">
-    <!-- Malihu Scrollbar-->
-    <link rel="stylesheet" type="text/css" href="{% static 'plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css' %}">
-    <!-- Animo.js-->
-    <link rel="stylesheet" type="text/css" href="{% static 'plugins/animo.js/animate-animo.min.css' %}">
-    <!-- Bootstrap Progressbar-->
-    <link rel="stylesheet" type="text/css" href="{% static 'plugins/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css' %}">
-    <!-- Toastr-->
-    <link rel="stylesheet" type="text/css" href="{% static 'plugins/toastr/toastr.min.css' %}">
-    <!-- SpinKit-->
-    <link rel="stylesheet" type="text/css" href="{% static 'plugins/SpinKit/css/spinners/2-double-bounce.css' %}">
-    <!-- Weather Icons-->
-    <link rel="stylesheet" type="text/css" href="{% static 'plugins/weather-icons/css/weather-icons-wind.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'plugins/weather-icons/css/weather-icons.min.css' %}">
-    <!-- Bootstrap Date Range Picker-->
-    <link rel="stylesheet" type="text/css" href="{% static 'plugins/bootstrap-daterangepicker/daterangepicker.css' %}">
-    <!-- Core CSS-->
-    <link rel="stylesheet" type="text/css" href="{% static 'build/css/first-layout.css' %}">
-  </head>
-  <body>
-    <!-- Header start-->
-    <header>
-      <div class="search-bar closed">
-        <form>
-          <div class="input-group input-group-lg">
-            <input type="text" placeholder="Search for..." class="form-control"><span class="input-group-btn">
-              <button type="button" class="btn btn-default search-bar-toggle"><i class="ion-close-round"></i></button></span>
-          </div>
-        </form>
-      </div><a href="javascript:;" role="button" class="hamburger-menu pull-left"><span></span></a>
-      <form class="search-form m-10 pull-left hidden-xs">
-        <div class="form-group has-feedback mb-0">
-          <input type="text" aria-describedby="inputSearchFor" placeholder="Buscar..." style="width: 180px" class="form-control rounded"><span aria-hidden="true" class="ion-search form-control-feedback"></span><span id="inputSearchFor" class="sr-only">(default)</span>
-        </div>
-      </form>
-      <a href="index.html" class="brand"><img src="{% static 'images/logo.png' %}" alt="" width="100"></a>
-      <ul class="notification-bar list-inline pull-right">
-        <li class="visible-xs"><a href="javascript:;" role="button" class="header-icon search-bar-toggle"><i class="ion-search"></i></a></li>
-
-        <li class="dropdown"><a id="dropdownMenu1" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle bubble header-icon"><i class="ion-alert"></i><span class="badge bg-danger">6</span></a>
-          <div aria-labelledby="dropdownMenu1" class="dropdown-menu dropdown-menu-right dm-medium animated fadeInUp">
-            <h5 class="dropdown-header">Hoy vencen 6 licenciatarios</h5>
-            <ul data-mcs-theme="minimal-dark" class="media-list mCustomScrollbar">
-              <li class="media"><a href="javascript:;">
-                  <div class="media-left"><i class="ion-beer media-object mo-md img-circle bg-primary text-center"></i></div>
-                  <div class="media-body">
-                    <h5 class="media-heading">Bar La Negra</h5>
-                    <p class="text-muted mb-0">Calle 20 129, Barrio de San José</p>
-                  </div>
-                  <div class="media-right text-nowrap">
-                    <time datetime="2016-12-10T20:27:48+07:00" class="fs-13 text-muted">5 mins</time>
-                  </div></a></li>
-              <li class="media"><a href="javascript:;">
-                  <div class="media-left"><i class="ion-beer media-object mo-md img-circle bg-primary text-center"></i></div>
-                  <div class="media-body">
-                    <h5 class="media-heading">Bar La Negra</h5>
-                    <p class="text-muted mb-0">Calle 20 129, Barrio de San José</p>
-                  </div>
-                  <div class="media-right text-nowrap">
-                    <time datetime="2016-12-10T20:27:48+07:00" class="fs-13 text-muted">15 mins</time>
-                  </div></a></li>
-              <li class="media"><a href="javascript:;">
-                  <div class="media-left"><i class="ion-beer media-object mo-md img-circle bg-primary text-center"></i></div>
-                  <div class="media-body">
-                    <h5 class="media-heading">Bar La Negra</h5>
-                    <p class="text-muted mb-0">Calle 20 129, Barrio de San José</p>
-                  </div>
-                  <div class="media-right text-nowrap">
-                    <time datetime="2016-12-10T20:27:48+07:00" class="fs-13 text-muted">5 mins</time>
-                  </div></a></li>
-              <li class="media"><a href="javascript:;">
-                  <div class="media-left"><i class="ion-beer media-object mo-md img-circle bg-primary text-center"></i></div>
-                  <div class="media-body">
-                    <h5 class="media-heading">Bar La Negra</h5>
-                    <p class="text-muted mb-0">Calle 20 129, Barrio de San José</p>
-                  </div>
-                  <div class="media-right text-nowrap">
-                    <time datetime="2016-12-10T20:27:48+07:00" class="fs-13 text-muted">5 mins</time>
-                  </div></a></li>
-              <li class="media"><a href="javascript:;">
-                  <div class="media-left"><i class="ion-beer media-object mo-md img-circle bg-primary text-center"></i></div>
-                  <div class="media-body">
-                    <h5 class="media-heading">Bar La Negra</h5>
-                    <p class="text-muted mb-0">Calle 20 129, Barrio de San José</p>
-                  </div>
-                  <div class="media-right text-nowrap">
-                    <time datetime="2016-12-10T20:27:48+07:00" class="fs-13 text-muted">5 mins</time>
-                  </div></a></li>
-              <li class="media"><a href="javascript:;">
-                  <div class="media-left"><i class="ion-beer media-object mo-md img-circle bg-primary text-center"></i></div>
-                  <div class="media-body">
-                    <h5 class="media-heading">Bar La Negra</h5>
-                    <p class="text-muted mb-0">Calle 20 129, Barrio de San José</p>
-                  </div>
-                  <div class="media-right text-nowrap">
-                    <time datetime="2016-12-10T20:27:48+07:00" class="fs-13 text-muted">5 mins</time>
-                  </div></a></li>
-            </ul>
-            <div class="dropdown-footer"><a href="javascript:;" class="text-muted">Ver todos los vencidos</a></div>
-          </div>
-        </li>
-        <li class="dropdown hidden-sm hidden-xs"><a id="dropdownMenu2" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle header-icon lh-1 pt-10 pb-10">
-            <div class="media mt-0">
-              <div class="media-left avatar"><img src="{% static 'build/images/users/04.jpg' %}" alt="" class="media-object img-circle"><span class="status bg-success"></span></div>
-              <div class="media-right media-middle pl-0">
-                <p class="fs-12 mb-0">Hola, Juan</p>
+  {% block title %}
+    {{ title }}
+  {% endblock %}
+    {% block content %}
+    <div class="row">
+      <div class="col-md-3">
+        <div class="widget">
+          <div class="widget-body">
+            <div class="media">
+              <div class="media-body"><span class="fs-12 text-muted text-uppercase">Por vencer </span><span class="text-danger"><i class="ion-arrow-down-c"></i> 2.43%</span>
+                <div class="fs-36 fw-300 counter">650</div>
               </div>
-            </div></a>
-          <ul aria-labelledby="dropdownMenu2" class="dropdown-menu dropdown-menu-right animated fadeInUp icon">
-            <li><a href="profile.html"><i class="ion-person mr-5"></i> Mi cuenta</a></li>
-            <li><a href="email-inbox.html"><i class="ion-filing mr-5"></i> Mensajes</a></li>
-            <li><a href="profile.html"><i class="ion-gear-b mr-5"></i> Configuración</a></li>
-            <li><a href="login.html"><i class="ion-unlocked mr-5"></i> Logout</a></li>
-          </ul>
-        </li>
-
-      </ul>
-    </header>
-    <!-- Header end-->
-    <div class="main-container">
-      <!-- Main Sidebar start-->
-      <aside data-mcs-theme="minimal-dark" class="main-sidebar mCustomScrollbar">
-        <div class="media user">
-          <div class="media-left">
-            <div id="esp-user-profile" data-percent="66" style="height: 56px; width: 56px; line-height: 40px; padding: 8px;" class="easy-pie-chart"><img src="{% static 'build/images/users/04.jpg' %}" alt="" class="avatar img-circle"></div>
-          </div>
-          <div style="overflow: visible" class="media-body media-middle">
-            <h4 class="media-heading fs-16">Juan Pech</h4>
-            <div class="dropdown"><a id="dropdown-status" href="javascript:;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" class="dropdown-toggle"><span class="status bg-success"></span> Opciones <span class="caret"></span></a>
-              <ul aria-labelledby="dropdown-status" class="dropdown-menu animated fadeInUp">
-                <li><a href="#">Configuración</a></li>
-                <li><a href="#">Salir</a></li>
-              </ul>
+              <div class="media-right"><i class="ion-ios-list-outline fs-36"></i></div>
             </div>
           </div>
-        </div>
-        <ul class="list-unstyled navigation mb-0">
-          <li class="sidebar-category">licenciatarios</li>
-          <li class="panel"><a role="button" data-toggle="collapse" data-parent=".navigation" href="#collapse1" aria-expanded="false" aria-controls="collapse1" class="active collapsed"><i class="ion-ios-home-outline bg-danger"></i><span class="sidebar-title">Inicio</span></a>
-            <ul id="collapse1" class="list-unstyled">
-              <li><a href="#" type="button" data-target=".bs-example-modal-form" data-toogle='modal' class="active">Agregar</a></li>
-              <button type="button" data-toggle="modal" data-target=".bs-example-modal-form" class="btn btn-success mr-10 mb-10">Launch Modal</button>
-              <li><a href="#">Editar</a></li>
-              <li><a href="#" class="active">Eliminar</a></li>
-              <li><a href="#">Buscar</a></li>
-            </ul>
-          </li>
-          <li class="panel"><a role="button" data-toggle="collapse" data-parent=".navigation" href="#collapse2" aria-expanded="false" aria-controls="collapse2" class="collapsed"><i class="ion-ios-printer-outline bg-danger"></i><span class="sidebar-title">Reportes</span></a>
-            <ul id="collapse2" class="list-unstyled">
-              <li><a href="#">Hoy</a></li>
-              <li><a href="#">Noviembre</a></li>
-              <li><a href="#">Personalizado</a></li>
-            </ul>
-          </li>
-          <li class="sidebar-category">Sistema</li>
-          <li class="panel"><a role="button" data-toggle="collapse" data-parent=".navigation" href="#collapse20" aria-expanded="false" aria-controls="collapse20" class="collapsed"><i class="ion-ios-folder-outline bg-black"></i><span class="sidebar-title">Usuarios</span></a>
-            <ul id="collapse20" class="list-unstyled collapse">
-              <li><a role="button" data-toggle="collapse" data-parent="#collapse20" href="#collapse201" aria-expanded="false" aria-controls="collapse201" class="collapsed">agregar</a>
-              </li>
-              <li><a role="button" data-toggle="collapse" data-parent="#collapse20" href="#collapse201" aria-expanded="false" aria-controls="collapse201" class="collapsed">buscar</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-
-
-      </aside>
-      <!-- Main Sidebar end-->
-      <div class="page-container">
-        <div class="page-content container-fluid">
-          <div class="row">
-            <div class="col-md-3">
-              <div class="widget">
-                <div class="widget-body">
-                  <div class="media">
-                    <div class="media-body"><span class="fs-12 text-muted text-uppercase">Por vencer </span><span class="text-danger"><i class="ion-arrow-down-c"></i> 2.43%</span>
-                      <div class="fs-36 fw-300 counter">650</div>
-                    </div>
-                    <div class="media-right"><i class="ion-ios-list-outline fs-36"></i></div>
-                  </div>
-                </div>
-                <div id="flot-order" style="height: 50px; margin-top: -30px"></div>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="widget">
-                <div class="widget-body">
-                  <div class="media">
-                    <div class="media-body"><span class="fs-12 text-muted text-uppercase">Vencidos </span><span class="text-success"><i class="ion-arrow-up-c"></i> 6.54%</span>
-                      <div class="fs-36 fw-300">$<span class="counter">320</span></div>
-                    </div>
-                    <div class="media-right"><i class="ion-ios-pulse fs-36"></i></div>
-                  </div>
-                </div>
-                <div id="flot-revenue" style="height: 50px; margin-top: -30px"></div>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="widget">
-                <div class="widget-body">
-                  <div class="media">
-                    <div class="media-body"><span class="fs-12 text-muted text-uppercase">Nuevos </span><span class="text-danger"><i class="ion-arrow-down-c"></i> 5.62%</span>
-                      <div class="fs-36 fw-300 counter">1,860</div>
-                    </div>
-                    <div class="media-right"><i class="ion-ios-person-outline fs-36"></i></div>
-                  </div>
-                </div>
-                <div id="flot-user" style="height: 50px; margin-top: -30px"></div>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="widget">
-                <div class="widget-body">
-                  <div class="media">
-                    <div class="media-body"><span class="fs-12 text-muted text-uppercase">Totales </span><span class="text-success"><i class="ion-arrow-up-c"></i> 3.98%</span>
-                      <div class="fs-36 fw-300 counter">1,350</div>
-                    </div>
-                    <div class="media-right"><i class="ion-ios-compose-outline fs-36"></i></div>
-                  </div>
-                </div>
-                <div id="flot-feedback" style="height: 50px; margin-top: -30px"></div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4">
-              <div class="widget">
-                <div class="widget-heading">
-                  <h3 class="widget-title">Mapa</h3>
-                </div>
-                <div class="widget-body">
-                  <div id="simpleMap" style="height: 300px; position: relative; overflow: hidden;"><div style="height: 100%; width: 100%; position: absolute; background-color: rgb(229, 227, 223);"><div class="gm-style" style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0;"><div style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;) 8 8, default;"><div style="position: absolute; left: 0px; top: 0px; z-index: 1; width: 100%; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);"><div style="position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"><div style="width: 256px; height: 256px; position: absolute; left: 46px; top: -74px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 46px; top: 182px;"></div><div style="width: 256px; height: 256px; position: absolute; left: -210px; top: -74px;"></div><div style="width: 256px; height: 256px; position: absolute; left: -210px; top: 182px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 302px; top: -74px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 302px; top: 182px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 558px; top: -74px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 558px; top: 182px;"></div></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: -1;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 46px; top: -74px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 46px; top: 182px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -210px; top: -74px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -210px; top: 182px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 302px; top: -74px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 302px; top: 182px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 558px; top: -74px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 558px; top: 182px;"></div></div></div></div><div style="position: absolute; z-index: 0; left: 0px; top: 0px;"><div style="overflow: hidden; width: 432px; height: 300px;"><img src="https://maps.googleapis.com/maps/api/js/StaticMapService.GetMapImage?1m2&amp;1i44754&amp;2i104522&amp;2e1&amp;3u10&amp;4m2&amp;1u432&amp;2u300&amp;5m5&amp;1e0&amp;5sen-US&amp;6sus&amp;10b1&amp;12b1&amp;token=106193" style="width: 432px; height: 300px;"></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"><div style="position: absolute; left: 46px; top: -74px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i10!2i175!3i408!4i256!2m3!1e0!2sm!3i369047907!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=26724" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -210px; top: 182px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i10!2i174!3i409!4i256!2m3!1e0!2sm!3i369047907!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=13956" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 302px; top: -74px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i10!2i176!3i408!4i256!2m3!1e0!2sm!3i369047943!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=93362" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 302px; top: 182px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i10!2i176!3i409!4i256!2m3!1e0!2sm!3i369047943!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=129383" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -210px; top: -74px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i10!2i174!3i408!4i256!2m3!1e0!2sm!3i369047907!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=109006" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 46px; top: 182px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i10!2i175!3i409!4i256!2m3!1e0!2sm!3i369047907!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=62745" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 558px; top: -74px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i10!2i177!3i408!4i256!2m3!1e0!2sm!3i369047943!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=11080" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 558px; top: 182px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i10!2i177!3i409!4i256!2m3!1e0!2sm!3i369047943!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=47101" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 2; width: 100%; height: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 3; width: 100%; height: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 4; width: 100%; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);"><div style="position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"></div></div></div><div style="margin-left: 5px; margin-right: 5px; z-index: 1000000; position: absolute; left: 0px; bottom: 0px;"><a target="_blank" href="https://maps.google.com/maps?ll=34.052234,-117.997179&amp;z=10&amp;t=m&amp;hl=en-US&amp;gl=US&amp;mapclient=apiv3" title="Click to see this area on Google Maps" style="position: static; overflow: visible; float: none; display: inline;"><div style="width: 66px; height: 26px; cursor: pointer;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/google4.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 66px; height: 26px; user-select: none; border: 0px; padding: 0px; margin: 0px;"></div></a></div><div style="background-color: white; padding: 15px 21px; border: 1px solid rgb(171, 171, 171); font-family: Roboto, Arial, sans-serif; color: rgb(34, 34, 34); box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px; z-index: 10000002; display: none; width: 256px; height: 148px; position: absolute; left: 246px; top: 60px;"><div style="padding: 0px 0px 10px; font-size: 16px;">Map Data</div><div style="font-size: 13px;">Map data ©2016 Google</div><div style="width: 13px; height: 13px; overflow: hidden; position: absolute; opacity: 0.7; right: 12px; top: 12px; z-index: 10000; cursor: pointer;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/mapcnt6.png" draggable="false" style="position: absolute; left: -2px; top: -336px; width: 59px; height: 492px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div><div class="gmnoprint" style="z-index: 1000001; position: absolute; right: 166px; bottom: 0px; width: 121px;"><div draggable="false" class="gm-style-cc" style="user-select: none; height: 14px; line-height: 14px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a style="color: rgb(68, 68, 68); text-decoration: none; cursor: pointer; display: none;">Map Data</a><span style="">Map data ©2016 Google</span></div></div></div><div class="gmnoscreen" style="position: absolute; right: 0px; bottom: 0px;"><div style="font-family: Roboto, Arial, sans-serif; font-size: 11px; color: rgb(68, 68, 68); direction: ltr; text-align: right; background-color: rgb(245, 245, 245);">Map data ©2016 Google</div></div><div class="gmnoprint gm-style-cc" draggable="false" style="z-index: 1000001; user-select: none; height: 14px; line-height: 14px; position: absolute; right: 95px; bottom: 0px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a href="https://www.google.com/intl/en-US_US/help/terms_maps.html" target="_blank" style="text-decoration: none; cursor: pointer; color: rgb(68, 68, 68);">Terms of Use</a></div></div><div style="cursor: pointer; width: 25px; height: 25px; overflow: hidden; display: none; margin: 10px 14px; position: absolute; top: 0px; right: 0px;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/sv9.png" draggable="false" class="gm-fullscreen-control" style="position: absolute; left: -52px; top: -86px; width: 164px; height: 175px; user-select: none; border: 0px; padding: 0px; margin: 0px;"></div><div draggable="false" class="gm-style-cc" style="user-select: none; height: 14px; line-height: 14px; position: absolute; right: 0px; bottom: 0px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a target="_new" title="Report errors in the road map or imagery to Google" href="https://www.google.com/maps/@34.052234,-117.9971793,10z/data=!10m1!1e1!12b1?source=apiv3&amp;rapsrc=apiv3" style="font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); text-decoration: none; position: relative;">Report a map error</a></div></div><div class="gmnoprint gm-bundled-control gm-bundled-control-on-bottom" draggable="false" controlwidth="28" controlheight="93" style="margin: 10px; user-select: none; position: absolute; bottom: 107px; right: 28px;"><div class="gmnoprint" controlwidth="28" controlheight="55" style="position: absolute; left: 0px; top: 38px;"><div draggable="false" style="user-select: none; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; border-radius: 2px; cursor: pointer; background-color: rgb(255, 255, 255); width: 28px; height: 55px;"><div title="Zoom in" style="position: relative; width: 28px; height: 27px; left: 0px; top: 0px;"><div style="overflow: hidden; position: absolute; width: 15px; height: 15px; left: 7px; top: 6px;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl.png" draggable="false" style="position: absolute; left: 0px; top: 0px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 120px; height: 54px;"></div></div><div style="position: relative; overflow: hidden; width: 67%; height: 1px; left: 16%; background-color: rgb(230, 230, 230); top: 0px;"></div><div title="Zoom out" style="position: relative; width: 28px; height: 27px; left: 0px; top: 0px;"><div style="overflow: hidden; position: absolute; width: 15px; height: 15px; left: 7px; top: 6px;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl.png" draggable="false" style="position: absolute; left: 0px; top: -15px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 120px; height: 54px;"></div></div></div></div><div class="gm-svpc" controlwidth="28" controlheight="28" style="background-color: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; border-radius: 2px; width: 28px; height: 28px; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;) 8 8, default; position: absolute; left: 0px; top: 0px;"><div style="position: absolute; left: 1px; top: 1px;"></div><div style="position: absolute; left: 1px; top: 1px;"><div aria-label="Street View Pegman Control" style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout5.png" draggable="false" style="position: absolute; left: -147px; top: -26px; width: 215px; height: 835px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div aria-label="Pegman is on top of the Map" style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout5.png" draggable="false" style="position: absolute; left: -147px; top: -52px; width: 215px; height: 835px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div aria-label="Street View Pegman Control" style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout5.png" draggable="false" style="position: absolute; left: -147px; top: -78px; width: 215px; height: 835px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div></div><div class="gmnoprint" controlwidth="28" controlheight="0" style="display: none; position: absolute;"><div title="Rotate map 90 degrees" style="width: 28px; height: 28px; overflow: hidden; position: absolute; border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; cursor: pointer; background-color: rgb(255, 255, 255); display: none;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl4.png" draggable="false" style="position: absolute; left: -141px; top: 6px; width: 170px; height: 54px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div class="gm-tilt" style="width: 28px; height: 28px; overflow: hidden; position: absolute; border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; top: 0px; cursor: pointer; background-color: rgb(255, 255, 255);"><img src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl4.png" draggable="false" style="position: absolute; left: -141px; top: -13px; width: 170px; height: 54px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div></div><div class="gmnoprint" style="margin: 10px; z-index: 0; position: absolute; cursor: pointer; left: 0px; top: 0px;"><div class="gm-style-mtc" style="float: left;"><div draggable="false" title="Show street map" style="direction: ltr; overflow: hidden; text-align: center; position: relative; color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 8px; border-bottom-left-radius: 2px; border-top-left-radius: 2px; -webkit-background-clip: padding-box; background-clip: padding-box; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; min-width: 22px; font-weight: 500;">Map</div><div style="background-color: white; z-index: -1; padding: 2px; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; position: absolute; left: 0px; top: 31px; text-align: left; display: none;"><div draggable="false" title="Show street map with terrain" style="color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 6px 8px 6px 6px; direction: ltr; text-align: left; white-space: nowrap;"><span role="checkbox" style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; background-color: rgb(255, 255, 255); border: 1px solid rgb(198, 198, 198); border-radius: 1px; width: 13px; height: 13px; vertical-align: middle;"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden; display: none;"><img src="https://maps.gstatic.com/mapfiles/mv/imgs8.png" draggable="false" style="position: absolute; left: -52px; top: -44px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 68px; height: 67px;"></div></span><label style="vertical-align: middle; cursor: pointer;">Terrain</label></div></div></div><div class="gm-style-mtc" style="float: left;"><div draggable="false" title="Show satellite imagery" style="direction: ltr; overflow: hidden; text-align: center; position: relative; color: rgb(86, 86, 86); font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 8px; border-bottom-right-radius: 2px; border-top-right-radius: 2px; -webkit-background-clip: padding-box; background-clip: padding-box; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; border-left: 0px; min-width: 40px;">Satellite</div><div style="background-color: white; z-index: -1; padding: 2px; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; position: absolute; right: 0px; top: 31px; text-align: left; display: none;"><div draggable="false" title="Show imagery with street names" style="color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 6px 8px 6px 6px; direction: ltr; text-align: left; white-space: nowrap;"><span role="checkbox" style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; background-color: rgb(255, 255, 255); border: 1px solid rgb(198, 198, 198); border-radius: 1px; width: 13px; height: 13px; vertical-align: middle;"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden;"><img src="https://maps.gstatic.com/mapfiles/mv/imgs8.png" draggable="false" style="position: absolute; left: -52px; top: -44px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 68px; height: 67px;"></div></span><label style="vertical-align: middle; cursor: pointer;">Labels</label></div></div></div></div></div></div></div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-8">
-              <div class="widget">
-                <div class="widget-heading clearfix">
-                  <h3 class="widget-title pull-left">Licenciatarios</h3>
-                  <ul class="widget-tools pull-right list-inline">
-                    <li><a href="javascript:;" class="widget-collapse"><i class="ion-chevron-up"></i></a></li>
-                    <li><a href="javascript:;" class="widget-reload"><i class="ion-refresh"></i></a></li>
-                    <li><a href="javascript:;" class="widget-remove"><i class="ion-close-round"></i></a></li>
-                  </ul>
-                </div>
-                <div class="widget-body">
-                  <div class="table-responsive">
-                    <table class="table mb-0">
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th>Licenciatario</th>
-                          <th class="text-center">Vence</th>
-                          <th class="text-center">Imprimir</th>
-                          <th class="text-center">Opciones</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {% if licenciatarios %}
-                          {% for licenciatario in licenciatarios %}
-                        <tr>
-                          <td>{{ licenciatario.pk }}</td>
-                          <td>{{ licenciatario.nombre_comercial }}</td>
-                          <td class="text-center">{{ licenciatario.expedicion_fecha }}</td>
-                          <td class="text-center"><span class="label label-outline label-success"><a href={{licenciatario.print_url}}>Imprimir</a></span></td>
-                          <td class="text-center text-danger"><i class="ion-compose"></i></td>
-                        </tr>
-                          {% endfor %}
-                        {% endif %}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
+          <div id="flot-order" style="height: 50px; margin-top: -30px"></div>
         </div>
       </div>
-
+      <div class="col-md-3">
+        <div class="widget">
+          <div class="widget-body">
+            <div class="media">
+              <div class="media-body"><span class="fs-12 text-muted text-uppercase">Vencidos </span><span class="text-success"><i class="ion-arrow-up-c"></i> 6.54%</span>
+                <div class="fs-36 fw-300">$<span class="counter">320</span></div>
+              </div>
+              <div class="media-right"><i class="ion-ios-pulse fs-36"></i></div>
+            </div>
+          </div>
+          <div id="flot-revenue" style="height: 50px; margin-top: -30px"></div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="widget">
+          <div class="widget-body">
+            <div class="media">
+              <div class="media-body"><span class="fs-12 text-muted text-uppercase">Nuevos </span><span class="text-danger"><i class="ion-arrow-down-c"></i> 5.62%</span>
+                <div class="fs-36 fw-300 counter">1,860</div>
+              </div>
+              <div class="media-right"><i class="ion-ios-person-outline fs-36"></i></div>
+            </div>
+          </div>
+          <div id="flot-user" style="height: 50px; margin-top: -30px"></div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="widget">
+          <div class="widget-body">
+            <div class="media">
+              <div class="media-body"><span class="fs-12 text-muted text-uppercase">Totales </span><span class="text-success"><i class="ion-arrow-up-c"></i> 3.98%</span>
+                <div class="fs-36 fw-300 counter">1,350</div>
+              </div>
+              <div class="media-right"><i class="ion-ios-compose-outline fs-36"></i></div>
+            </div>
+          </div>
+          <div id="flot-feedback" style="height: 50px; margin-top: -30px"></div>
+        </div>
+      </div>
     </div>
-
-
-
-    <!-- MODAL -->
-    <div tabindex="1" role="dialog" aria-labelledby="modalWithForm" class="modal fade bs-example-modal-form">
-      <div role="document" class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-            <h4 id="modalWithForm" class="modal-title">Agregar Licenciatario</h4>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="widget">
+          <div class="widget-heading">
+            <h3 class="widget-title">Mapa</h3>
           </div>
-          <div class="modal-body">
-            <form>
-              {{ form }}
-              <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input id="exampleInputEmail1" type="text" placeholder="Enter email" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input id="exampleInputPassword1" type="password" placeholder="Password" class="form-control">
-              </div>
-            </form>
+          <div class="widget-body">
+            <div id="simpleMap" style="height: 300px; position: relative; overflow: hidden;"><div style="height: 100%; width: 100%; position: absolute; background-color: rgb(229, 227, 223);"><div class="gm-style" style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0;"><div style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;) 8 8, default;"><div style="position: absolute; left: 0px; top: 0px; z-index: 1; width: 100%; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);"><div style="position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"><div style="width: 256px; height: 256px; position: absolute; left: 46px; top: -74px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 46px; top: 182px;"></div><div style="width: 256px; height: 256px; position: absolute; left: -210px; top: -74px;"></div><div style="width: 256px; height: 256px; position: absolute; left: -210px; top: 182px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 302px; top: -74px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 302px; top: 182px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 558px; top: -74px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 558px; top: 182px;"></div></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: -1;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 46px; top: -74px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 46px; top: 182px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -210px; top: -74px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -210px; top: 182px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 302px; top: -74px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 302px; top: 182px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 558px; top: -74px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 558px; top: 182px;"></div></div></div></div><div style="position: absolute; z-index: 0; left: 0px; top: 0px;"><div style="overflow: hidden; width: 432px; height: 300px;"><img src="https://maps.googleapis.com/maps/api/js/StaticMapService.GetMapImage?1m2&amp;1i44754&amp;2i104522&amp;2e1&amp;3u10&amp;4m2&amp;1u432&amp;2u300&amp;5m5&amp;1e0&amp;5sen-US&amp;6sus&amp;10b1&amp;12b1&amp;token=106193" style="width: 432px; height: 300px;"></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"><div style="position: absolute; left: 46px; top: -74px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i10!2i175!3i408!4i256!2m3!1e0!2sm!3i369047907!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=26724" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -210px; top: 182px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i10!2i174!3i409!4i256!2m3!1e0!2sm!3i369047907!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=13956" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 302px; top: -74px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i10!2i176!3i408!4i256!2m3!1e0!2sm!3i369047943!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=93362" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 302px; top: 182px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i10!2i176!3i409!4i256!2m3!1e0!2sm!3i369047943!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=129383" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -210px; top: -74px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i10!2i174!3i408!4i256!2m3!1e0!2sm!3i369047907!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=109006" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 46px; top: 182px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i10!2i175!3i409!4i256!2m3!1e0!2sm!3i369047907!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=62745" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 558px; top: -74px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i10!2i177!3i408!4i256!2m3!1e0!2sm!3i369047943!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=11080" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 558px; top: 182px; transition: opacity 200ms ease-out;"><img src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i10!2i177!3i409!4i256!2m3!1e0!2sm!3i369047943!3m9!2sen-US!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=47101" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 2; width: 100%; height: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 3; width: 100%; height: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 4; width: 100%; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);"><div style="position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"></div></div></div><div style="margin-left: 5px; margin-right: 5px; z-index: 1000000; position: absolute; left: 0px; bottom: 0px;"><a target="_blank" href="https://maps.google.com/maps?ll=34.052234,-117.997179&amp;z=10&amp;t=m&amp;hl=en-US&amp;gl=US&amp;mapclient=apiv3" title="Click to see this area on Google Maps" style="position: static; overflow: visible; float: none; display: inline;"><div style="width: 66px; height: 26px; cursor: pointer;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/google4.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 66px; height: 26px; user-select: none; border: 0px; padding: 0px; margin: 0px;"></div></a></div><div style="background-color: white; padding: 15px 21px; border: 1px solid rgb(171, 171, 171); font-family: Roboto, Arial, sans-serif; color: rgb(34, 34, 34); box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px; z-index: 10000002; display: none; width: 256px; height: 148px; position: absolute; left: 246px; top: 60px;"><div style="padding: 0px 0px 10px; font-size: 16px;">Map Data</div><div style="font-size: 13px;">Map data ©2016 Google</div><div style="width: 13px; height: 13px; overflow: hidden; position: absolute; opacity: 0.7; right: 12px; top: 12px; z-index: 10000; cursor: pointer;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/mapcnt6.png" draggable="false" style="position: absolute; left: -2px; top: -336px; width: 59px; height: 492px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div><div class="gmnoprint" style="z-index: 1000001; position: absolute; right: 166px; bottom: 0px; width: 121px;"><div draggable="false" class="gm-style-cc" style="user-select: none; height: 14px; line-height: 14px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a style="color: rgb(68, 68, 68); text-decoration: none; cursor: pointer; display: none;">Map Data</a><span style="">Map data ©2016 Google</span></div></div></div><div class="gmnoscreen" style="position: absolute; right: 0px; bottom: 0px;"><div style="font-family: Roboto, Arial, sans-serif; font-size: 11px; color: rgb(68, 68, 68); direction: ltr; text-align: right; background-color: rgb(245, 245, 245);">Map data ©2016 Google</div></div><div class="gmnoprint gm-style-cc" draggable="false" style="z-index: 1000001; user-select: none; height: 14px; line-height: 14px; position: absolute; right: 95px; bottom: 0px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a href="https://www.google.com/intl/en-US_US/help/terms_maps.html" target="_blank" style="text-decoration: none; cursor: pointer; color: rgb(68, 68, 68);">Terms of Use</a></div></div><div style="cursor: pointer; width: 25px; height: 25px; overflow: hidden; display: none; margin: 10px 14px; position: absolute; top: 0px; right: 0px;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/sv9.png" draggable="false" class="gm-fullscreen-control" style="position: absolute; left: -52px; top: -86px; width: 164px; height: 175px; user-select: none; border: 0px; padding: 0px; margin: 0px;"></div><div draggable="false" class="gm-style-cc" style="user-select: none; height: 14px; line-height: 14px; position: absolute; right: 0px; bottom: 0px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a target="_new" title="Report errors in the road map or imagery to Google" href="https://www.google.com/maps/@34.052234,-117.9971793,10z/data=!10m1!1e1!12b1?source=apiv3&amp;rapsrc=apiv3" style="font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); text-decoration: none; position: relative;">Report a map error</a></div></div><div class="gmnoprint gm-bundled-control gm-bundled-control-on-bottom" draggable="false" controlwidth="28" controlheight="93" style="margin: 10px; user-select: none; position: absolute; bottom: 107px; right: 28px;"><div class="gmnoprint" controlwidth="28" controlheight="55" style="position: absolute; left: 0px; top: 38px;"><div draggable="false" style="user-select: none; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; border-radius: 2px; cursor: pointer; background-color: rgb(255, 255, 255); width: 28px; height: 55px;"><div title="Zoom in" style="position: relative; width: 28px; height: 27px; left: 0px; top: 0px;"><div style="overflow: hidden; position: absolute; width: 15px; height: 15px; left: 7px; top: 6px;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl.png" draggable="false" style="position: absolute; left: 0px; top: 0px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 120px; height: 54px;"></div></div><div style="position: relative; overflow: hidden; width: 67%; height: 1px; left: 16%; background-color: rgb(230, 230, 230); top: 0px;"></div><div title="Zoom out" style="position: relative; width: 28px; height: 27px; left: 0px; top: 0px;"><div style="overflow: hidden; position: absolute; width: 15px; height: 15px; left: 7px; top: 6px;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl.png" draggable="false" style="position: absolute; left: 0px; top: -15px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 120px; height: 54px;"></div></div></div></div><div class="gm-svpc" controlwidth="28" controlheight="28" style="background-color: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; border-radius: 2px; width: 28px; height: 28px; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;) 8 8, default; position: absolute; left: 0px; top: 0px;"><div style="position: absolute; left: 1px; top: 1px;"></div><div style="position: absolute; left: 1px; top: 1px;"><div aria-label="Street View Pegman Control" style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout5.png" draggable="false" style="position: absolute; left: -147px; top: -26px; width: 215px; height: 835px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div aria-label="Pegman is on top of the Map" style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout5.png" draggable="false" style="position: absolute; left: -147px; top: -52px; width: 215px; height: 835px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div aria-label="Street View Pegman Control" style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/cb_scout5.png" draggable="false" style="position: absolute; left: -147px; top: -78px; width: 215px; height: 835px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div></div><div class="gmnoprint" controlwidth="28" controlheight="0" style="display: none; position: absolute;"><div title="Rotate map 90 degrees" style="width: 28px; height: 28px; overflow: hidden; position: absolute; border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; cursor: pointer; background-color: rgb(255, 255, 255); display: none;"><img src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl4.png" draggable="false" style="position: absolute; left: -141px; top: 6px; width: 170px; height: 54px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div class="gm-tilt" style="width: 28px; height: 28px; overflow: hidden; position: absolute; border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; top: 0px; cursor: pointer; background-color: rgb(255, 255, 255);"><img src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl4.png" draggable="false" style="position: absolute; left: -141px; top: -13px; width: 170px; height: 54px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div></div><div class="gmnoprint" style="margin: 10px; z-index: 0; position: absolute; cursor: pointer; left: 0px; top: 0px;"><div class="gm-style-mtc" style="float: left;"><div draggable="false" title="Show street map" style="direction: ltr; overflow: hidden; text-align: center; position: relative; color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 8px; border-bottom-left-radius: 2px; border-top-left-radius: 2px; -webkit-background-clip: padding-box; background-clip: padding-box; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; min-width: 22px; font-weight: 500;">Map</div><div style="background-color: white; z-index: -1; padding: 2px; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; position: absolute; left: 0px; top: 31px; text-align: left; display: none;"><div draggable="false" title="Show street map with terrain" style="color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 6px 8px 6px 6px; direction: ltr; text-align: left; white-space: nowrap;"><span role="checkbox" style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; background-color: rgb(255, 255, 255); border: 1px solid rgb(198, 198, 198); border-radius: 1px; width: 13px; height: 13px; vertical-align: middle;"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden; display: none;"><img src="https://maps.gstatic.com/mapfiles/mv/imgs8.png" draggable="false" style="position: absolute; left: -52px; top: -44px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 68px; height: 67px;"></div></span><label style="vertical-align: middle; cursor: pointer;">Terrain</label></div></div></div><div class="gm-style-mtc" style="float: left;"><div draggable="false" title="Show satellite imagery" style="direction: ltr; overflow: hidden; text-align: center; position: relative; color: rgb(86, 86, 86); font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 8px; border-bottom-right-radius: 2px; border-top-right-radius: 2px; -webkit-background-clip: padding-box; background-clip: padding-box; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; border-left: 0px; min-width: 40px;">Satellite</div><div style="background-color: white; z-index: -1; padding: 2px; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; position: absolute; right: 0px; top: 31px; text-align: left; display: none;"><div draggable="false" title="Show imagery with street names" style="color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 6px 8px 6px 6px; direction: ltr; text-align: left; white-space: nowrap;"><span role="checkbox" style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; background-color: rgb(255, 255, 255); border: 1px solid rgb(198, 198, 198); border-radius: 1px; width: 13px; height: 13px; vertical-align: middle;"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden;"><img src="https://maps.gstatic.com/mapfiles/mv/imgs8.png" draggable="false" style="position: absolute; left: -52px; top: -44px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 68px; height: 67px;"></div></span><label style="vertical-align: middle; cursor: pointer;">Labels</label></div></div></div></div></div></div></div>
           </div>
-          <div class="modal-footer">
-            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-            <button type="button" class="btn btn-black">Save changes</button>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="widget">
+          <div class="widget-heading clearfix">
+            <h3 class="widget-title pull-left">Licenciatarios</h3>
+            <ul class="widget-tools pull-right list-inline">
+              <li><a href="javascript:;" class="widget-collapse"><i class="ion-chevron-up"></i></a></li>
+              <li><a href="javascript:;" class="widget-reload"><i class="ion-refresh"></i></a></li>
+              <li><a href="javascript:;" class="widget-remove"><i class="ion-close-round"></i></a></li>
+            </ul>
+          </div>
+          <div class="widget-body">
+            <div class="table-responsive">
+              <table class="table mb-0">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Licenciatario</th>
+                    <th class="text-center">Vence</th>
+                    <th class="text-center">Imprimir</th>
+                    <th class="text-center">Opciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% if licenciatarios %}
+                    {% for licenciatario in licenciatarios %}
+                  <tr>
+                    <td>{{ licenciatario.pk }}</td>
+                    <td>{{ licenciatario.nombre_comercial }}</td>
+                    <td class="text-center">{{ licenciatario.expedicion_fecha }}</td>
+                    <td class="text-center"><span class="label label-outline label-success"><a target='_blank' href="{% url 'licenciatarios:print-licencia' licenciatario.pk %}">Imprimir</a></span></td>
+                    <td class="text-center text-danger"><i class="ion-compose"></i></td>
+                  </tr>
+                    {% endfor %}
+                  {% endif %}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- MODAL -->
-    <!-- jQuery-->
-    <script type="text/javascript" src="{% static 'plugins/jquery/dist/jquery.min.js' %}"></script>
-    <!-- Bootstrap JavaScript-->
-    <script type="text/javascript" src="{% static 'plugins/bootstrap/dist/js/bootstrap.min.js' %}"></script>
-    <!-- Malihu Scrollbar-->
-    <script type="text/javascript" src="{% static 'plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js' %}"></script>
-    <!-- Animo.js-->
-    <script type="text/javascript" src="{% static 'plugins/animo.js/animo.min.js' %}"></script>
-    <!-- Bootstrap Progressbar-->
-    <script type="text/javascript" src="{% static 'plugins/bootstrap-progressbar/bootstrap-progressbar.min.js' %}"></script>
-    <!-- jQuery Easy Pie Chart-->
-    <script type="text/javascript" src="{% static 'plugins/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js' %}"></script>
-    <!-- MomentJS-->
-    <script type="text/javascript" src="{% static 'plugins/moment/min/moment.min.js' %}"></script>
-    <!-- jQuery BlockUI-->
-    <script type="text/javascript" src="{% static 'plugins/blockUI/jquery.blockUI.js' %}"></script>
-    <!-- jQuery Counter Up-->
-    <script type="text/javascript" src="{% static 'plugins/jquery-waypoints/waypoints.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'plugins/Counter-Up/jquery.counterup.min.js' %}"></script>
-    <!-- Flot Charts-->
-    <script type="text/javascript" src="{% static 'plugins/flot/jquery.flot.js' %}"></script>
-    <script type="text/javascript" src="{% static 'plugins/flot/jquery.flot.resize.js' %}"></script>
-    <script type="text/javascript" src="{% static 'plugins/flot.curvedlines/curvedLines.js' %}"></script>
-    <script type="text/javascript" src="{% static 'plugins/flot.tooltip/js/jquery.flot.tooltip.min.js' %}"></script>
-    <!-- Bootstrap Date Range Picker-->
-    <script type="text/javascript" src="{% static 'plugins/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
-    <!-- Core JS-->
-    <script type="text/javascript" src="{% static 'build/js/first-layout/app.js' %}"></script>
-    <script type="text/javascript" src="{% static 'build/js/first-layout/demo.js' %}"></script>
     <script type="text/javascript" src="{% static 'build/js/page-content/dashboard/index.js' %}"></script>
-  </body>
-</html>
+
+    {% endblock %}

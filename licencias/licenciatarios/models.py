@@ -22,6 +22,8 @@ class Licenciatarios(models.Model):
     expedicion_fecha = models.DateField()
     vencimiento_fecha = models.DateField()
 
+
+
     def __str__(self):
         space = ' '
         return self.nombre_comercial+space+'('+self.nombre+')'

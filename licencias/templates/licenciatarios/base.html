@@ -1,0 +1,355 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <!-- PACE-->
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/PACE/themes/blue/pace-theme-flash.css' %}">
+    <script type="text/javascript" src="{% static 'plugins/PACE/pace.min.js' %}"></script>
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/bootstrap/dist/css/bootstrap.min.css' %}">
+    <!-- Ionicons-->
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/Ionicons/css/ionicons.min.css' %}">
+    <!-- Malihu Scrollbar-->
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css' %}">
+    <!-- Animo.js-->
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/animo.js/animate-animo.min.css' %}">
+    <!-- Bootstrap Progressbar-->
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css' %}">
+    <!-- Toastr-->
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/toastr/toastr.min.css' %}">
+    <!-- SpinKit-->
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/SpinKit/css/spinners/2-double-bounce.css' %}">
+    <!-- Weather Icons-->
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/weather-icons/css/weather-icons-wind.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/weather-icons/css/weather-icons.min.css' %}">
+    <!-- Bootstrap Date Range Picker-->
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/bootstrap-daterangepicker/daterangepicker.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css' %}">
+
+    <!-- Core CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'build/css/first-layout.css' %}">
+    <style media="screen">
+      #map{
+        width:100%;
+        height: 230px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header start-->
+    <header>
+      <div class="search-bar closed">
+        <form>
+          <div class="input-group input-group-lg">
+            <input type="text" placeholder="Search for..." class="form-control"><span class="input-group-btn">
+              <button type="button" class="btn btn-default search-bar-toggle"><i class="ion-close-round"></i></button></span>
+          </div>
+        </form>
+      </div><a href="javascript:;" role="button" class="hamburger-menu pull-left"><span></span></a>
+      <form class="search-form m-10 pull-left hidden-xs">
+        <div class="form-group has-feedback mb-0">
+          <input type="text" aria-describedby="inputSearchFor" placeholder="Buscar..." style="width: 180px" class="form-control rounded"><span aria-hidden="true" class="ion-search form-control-feedback"></span><span id="inputSearchFor" class="sr-only">(default)</span>
+        </div>
+      </form>
+      <a href="{% url 'licenciatarios:index' %}" class="brand"><img src="{% static 'images/logo.png' %}" alt="" width="100"></a>
+      <ul class="notification-bar list-inline pull-right">
+        <li class="visible-xs"><a href="javascript:;" role="button" class="header-icon search-bar-toggle"><i class="ion-search"></i></a></li>
+
+        <li class="dropdown"><a id="dropdownMenu1" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle bubble header-icon"><i class="ion-alert"></i><span class="badge bg-danger">6</span></a>
+          <div aria-labelledby="dropdownMenu1" class="dropdown-menu dropdown-menu-right dm-medium animated fadeInUp">
+            <h5 class="dropdown-header">Hoy vencen 6 licenciatarios</h5>
+            <ul data-mcs-theme="minimal-dark" class="media-list mCustomScrollbar">
+              <li class="media"><a href="javascript:;">
+                  <div class="media-left"><i class="ion-beer media-object mo-md img-circle bg-primary text-center"></i></div>
+                  <div class="media-body">
+                    <h5 class="media-heading">Bar La Negra</h5>
+                    <p class="text-muted mb-0">Calle 20 129, Barrio de San José</p>
+                  </div>
+                  <div class="media-right text-nowrap">
+                    <time datetime="2016-12-10T20:27:48+07:00" class="fs-13 text-muted">5 mins</time>
+                  </div></a></li>
+              <li class="media"><a href="javascript:;">
+                  <div class="media-left"><i class="ion-beer media-object mo-md img-circle bg-primary text-center"></i></div>
+                  <div class="media-body">
+                    <h5 class="media-heading">Bar La Negra</h5>
+                    <p class="text-muted mb-0">Calle 20 129, Barrio de San José</p>
+                  </div>
+                  <div class="media-right text-nowrap">
+                    <time datetime="2016-12-10T20:27:48+07:00" class="fs-13 text-muted">15 mins</time>
+                  </div></a></li>
+              <li class="media"><a href="javascript:;">
+                  <div class="media-left"><i class="ion-beer media-object mo-md img-circle bg-primary text-center"></i></div>
+                  <div class="media-body">
+                    <h5 class="media-heading">Bar La Negra</h5>
+                    <p class="text-muted mb-0">Calle 20 129, Barrio de San José</p>
+                  </div>
+                  <div class="media-right text-nowrap">
+                    <time datetime="2016-12-10T20:27:48+07:00" class="fs-13 text-muted">5 mins</time>
+                  </div></a></li>
+              <li class="media"><a href="javascript:;">
+                  <div class="media-left"><i class="ion-beer media-object mo-md img-circle bg-primary text-center"></i></div>
+                  <div class="media-body">
+                    <h5 class="media-heading">Bar La Negra</h5>
+                    <p class="text-muted mb-0">Calle 20 129, Barrio de San José</p>
+                  </div>
+                  <div class="media-right text-nowrap">
+                    <time datetime="2016-12-10T20:27:48+07:00" class="fs-13 text-muted">5 mins</time>
+                  </div></a></li>
+              <li class="media"><a href="javascript:;">
+                  <div class="media-left"><i class="ion-beer media-object mo-md img-circle bg-primary text-center"></i></div>
+                  <div class="media-body">
+                    <h5 class="media-heading">Bar La Negra</h5>
+                    <p class="text-muted mb-0">Calle 20 129, Barrio de San José</p>
+                  </div>
+                  <div class="media-right text-nowrap">
+                    <time datetime="2016-12-10T20:27:48+07:00" class="fs-13 text-muted">5 mins</time>
+                  </div></a></li>
+              <li class="media"><a href="javascript:;">
+                  <div class="media-left"><i class="ion-beer media-object mo-md img-circle bg-primary text-center"></i></div>
+                  <div class="media-body">
+                    <h5 class="media-heading">Bar La Negra</h5>
+                    <p class="text-muted mb-0">Calle 20 129, Barrio de San José</p>
+                  </div>
+                  <div class="media-right text-nowrap">
+                    <time datetime="2016-12-10T20:27:48+07:00" class="fs-13 text-muted">5 mins</time>
+                  </div></a></li>
+            </ul>
+            <div class="dropdown-footer"><a href="javascript:;" class="text-muted">Ver todos los vencidos</a></div>
+          </div>
+        </li>
+        <li class="dropdown hidden-sm hidden-xs"><a id="dropdownMenu2" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle header-icon lh-1 pt-10 pb-10">
+            <div class="media mt-0">
+              <div class="media-left avatar"><img src="{% static 'build/images/users/04.jpg' %}" alt="" class="media-object img-circle"><span class="status bg-success"></span></div>
+              <div class="media-right media-middle pl-0">
+                <p class="fs-12 mb-0">Hola, Juan</p>
+              </div>
+            </div></a>
+          <ul aria-labelledby="dropdownMenu2" class="dropdown-menu dropdown-menu-right animated fadeInUp icon">
+            <li><a href="profile.html"><i class="ion-person mr-5"></i> Mi cuenta</a></li>
+            <li><a href="email-inbox.html"><i class="ion-filing mr-5"></i> Mensajes</a></li>
+            <li><a href="profile.html"><i class="ion-gear-b mr-5"></i> Configuración</a></li>
+            <li><a href="login.html"><i class="ion-unlocked mr-5"></i> Logout</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </header>
+    <!-- Header end-->
+    <div class="main-container">
+
+      {% block leftbar %}
+        {% include 'licenciatarios/left-bar.html'%}
+      {% endblock %}
+
+      <div class="page-container">
+        <div class="page-content container-fluid">
+          {% block content %}{% endblock %}
+
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <!-- MODAL -->
+    <div tabindex="1" role="dialog" aria-labelledby="modalWithForm" class="modal fade bs-example-modal-form">
+      <div role="document" class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+            <h4 id="modalWithForm" class="modal-title">Agregar Licenciatario</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+              {{ form }}
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input id="exampleInputEmail1" type="text" placeholder="Enter email" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input id="exampleInputPassword1" type="password" placeholder="Password" class="form-control">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+            <button type="button" class="btn btn-black">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- MODAL -->
+    <!-- jQuery-->
+    <script type="text/javascript" src="{% static 'plugins/jquery/dist/jquery.min.js' %}"></script>
+    <!-- Bootstrap JavaScript-->
+    <script type="text/javascript" src="{% static 'plugins/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <!-- Malihu Scrollbar-->
+    <script type="text/javascript" src="{% static 'plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+    <!-- Animo.js-->
+    <script type="text/javascript" src="{% static 'plugins/animo.js/animo.min.js' %}"></script>
+    <!-- Bootstrap Progressbar-->
+    <script type="text/javascript" src="{% static 'plugins/bootstrap-progressbar/bootstrap-progressbar.min.js' %}"></script>
+    <!-- jQuery Easy Pie Chart-->
+    <script type="text/javascript" src="{% static 'plugins/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js' %}"></script>
+    <!-- MomentJS-->
+    <script type="text/javascript" src="{% static 'plugins/moment/min/moment.min.js' %}"></script>
+    <!-- jQuery BlockUI-->
+    <script type="text/javascript" src="{% static 'plugins/blockUI/jquery.blockUI.js' %}"></script>
+    <!-- jQuery Counter Up-->
+    <script type="text/javascript" src="{% static 'plugins/jquery-waypoints/waypoints.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/Counter-Up/jquery.counterup.min.js' %}"></script>
+    <!-- Bootstrap Date Range Picker-->
+    <script type="text/javascript" src="{% static 'plugins/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
+    <!-- Bootstrap DatePicker-->
+    <script type="text/javascript" src="{% static 'plugins/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js' %}"></script>
+
+    <!-- Core JS-->
+    <script type="text/javascript" src="{% static 'build/js/first-layout/app.js' %}"></script>
+    <script type="text/javascript" src="{% static 'build/js/first-layout/demo.js' %}"></script>
+    <!-- <script type="text/javascript" src="{% static 'build/js/page-content/dashboard/index.js' %}"></script> -->
+
+    <script type="text/javascript">
+
+
+function initAutocomplete() {
+
+  var componentForm = {
+    id_domicilio: 'short_name',
+    id_colonia: 'long_name',
+    id_municipio: 'long_name',
+    administrative_area_level_1: 'short_name',
+    country: 'long_name',
+    postal_code: 'short_name'
+  };
+
+  $(document).ready(function(){
+    $('#id_nombre_comercial').parent().append('<div id="map"></div><input id="search" class="form-control inline-search">')
+
+
+
+    $('#search').on('click', function(){
+       $(window).scrollTop($('#id_razon_social').offset().top);
+    })
+
+
+    $('#horario').datetimepicker({
+               format: 'LT'
+           });
+    $('#id_expedicion_fecha').datetimepicker({
+        defaultDate: Date(),
+        format: "M/D/YYYY"
+    });
+    $('#id_vencimiento_fecha').datetimepicker({
+        defaultDate: new Date(new Date().setFullYear(new Date().getFullYear() + 1)),
+        format: "M/D/YYYY"
+    });
+    var placeSearch, autocomplete;
+    var componentForm = {
+      street_number: 'short_name',
+      route: 'long_name',
+      locality: 'long_name',
+      administrative_area_level_1: 'short_name',
+      country: 'long_name',
+      postal_code: 'short_name'
+    };
+  });
+
+
+
+
+
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat:19.8301251, lng:-90.53490870000002},
+    zoom: 8,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+
+  // Create the search box and link it to the UI element.
+  var input = document.getElementById('search');
+  var searchBox = new google.maps.places.SearchBox(input);
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+  // Bias the SearchBox results towards current map's viewport.
+  map.addListener('bounds_changed', function() {
+    searchBox.setBounds(map.getBounds());
+  });
+
+  var markers = [];
+  // [START region_getplaces]
+  // Listen for the event fired when the user selects a prediction and retrieve
+  // more details for that place.
+  searchBox.addListener('places_changed', function() {
+    var places = searchBox.getPlaces();
+    if (places.length == 0) {
+
+      return;
+    }
+
+    // Clear out the old markers.
+    markers.forEach(function(marker) {
+      marker.setMap(null);
+    });
+    markers = [];
+
+    // For each place, get the icon, name and location.
+    var bounds = new google.maps.LatLngBounds();
+    places.forEach(function(place) {
+      var icon = {
+        url: place.icon,
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(20, 20)
+      };
+
+
+      var direccion = place.formatted_address.split(',')
+
+      document.getElementById('id_domicilio').value = direccion[0];
+      document.getElementById('id_colonia').value = direccion[1];
+      document.getElementById('id_municipio').value = direccion[2].split(/[\d,]+/)[1];
+      document.getElementById('id_cp').value = direccion[2].split(' ')[1];
+      document.getElementById('id_entidad').value = direccion[3].split(' ')[1];
+      document.getElementById('id_telefono').value = place.formatted_phone_number.split(' ').join('')
+      document.getElementById('id_latlng').value = place.geometry.location.lat()+','+place.geometry.location.lng()
+
+
+      console.log(place);
+      // Create a marker for each place.
+      markers.push(new google.maps.Marker({
+        map: map,
+        icon: icon,
+        title: place.name,
+        position: place.geometry.location
+      }));
+
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
+    });
+    map.fitBounds(bounds);
+  });
+  // [END region_getplaces]
+    }
+
+    </script>
+    <!-- Flot Charts-->
+    <script type="text/javascript" src="{% static 'plugins/flot/jquery.flot.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/flot/jquery.flot.resize.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/flot.curvedlines/curvedLines.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/flot.tooltip/js/jquery.flot.tooltip.min.js' %}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1vQdzV7nTSFUe2klAEgwpokdsA9aDpzU&libraries=places&callback=initAutocomplete"
+        async defer></script>
+
+  </body>
+</html>
