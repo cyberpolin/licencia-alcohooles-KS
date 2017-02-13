@@ -241,14 +241,30 @@ function initAutocomplete() {
     $('#horario').datetimepicker({
                format: 'LT'
            });
-    $('#id_expedicion_fecha').datetimepicker({
+
+    if (!$('#id_expedicion_fecha').val()){
+      $('#id_expedicion_fecha').datetimepicker({
         defaultDate: Date(),
         format: "M/D/YYYY"
-    });
-    $('#id_vencimiento_fecha').datetimepicker({
-        defaultDate: new Date(new Date().setFullYear(new Date().getFullYear() + 1)),
-        format: "M/D/YYYY"
-    });
+      });
+    } else {
+      // $('#id_expedicion_fecha').datetimepicker({
+      //   // defaultDate: Date(),
+      //   // format: "M/D/YYYY"
+      // });
+    }
+    if (!$('#id_vencimiento_fecha').val()){
+      $('#id_vencimiento_fecha').datetimepicker({
+          defaultDate: new Date(new Date().setFullYear(new Date().getFullYear() + 1)),
+          format: "M/D/YYYY"
+      });
+    } else {
+      // $('#id_vencimiento_fecha').datetimepicker({
+      //   defaultDate: $('#id_vencimiento_fecha').val()
+      //     format: "M/D/YYYY"
+      // });
+    }
+
     var placeSearch, autocomplete;
     var componentForm = {
       street_number: 'short_name',

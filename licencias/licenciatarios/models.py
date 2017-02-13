@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib import admin
 from django.utils.html import format_html
+from django.urls import reverse
 
 # Create your models here.
 class Licenciatarios(models.Model):
@@ -22,6 +23,9 @@ class Licenciatarios(models.Model):
     expedicion_fecha = models.DateField()
     vencimiento_fecha = models.DateField()
 
+    def get_absolute_url(self):
+        return reverse('licenciatarios:index')
+        # return reverse('licencia-detail', kwargs={'pk': self.pk})
 
 
     def __str__(self):

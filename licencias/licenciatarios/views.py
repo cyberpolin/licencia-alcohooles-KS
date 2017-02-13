@@ -4,10 +4,15 @@ from django.http import HttpResponse
 from reportlab.lib.units import inch
 from reportlab.pdfgen import canvas
 from .models import Licenciatarios
+from django.contrib.auth.models import User
 from datetime import date
 #//////////////////////////
 
 from .forms import AddLicenciatario
+
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
+from django.urls import reverse_lazy
 
 
 
@@ -95,3 +100,39 @@ def licencia_edit(request, id):
     ctx['form'] = AddLicenciatario()
     ctx['title'] = 'Editar un licenciatario'
     return render(request, 'licenciatarios/add-licenciatario.html', ctx)
+
+
+class LicenciaCreate(CreateView):
+    model = Licenciatarios
+    form_class = AddLicenciatario
+    template_name='licenciatarios/add-licenciatario.html'
+    success_url = reverse_lazy('licenciatarios:index')
+
+class LicenciaUpdate(UpdateView):
+    model = Licenciatarios
+    form_class = AddLicenciatario
+    success_url = reverse_lazy('licenciatarios:index')
+class LicenciaDelete(DeleteView):
+    model = Licenciatarios
+    success_url = reverse_lazy('licenciatarios:index')
+
+
+class UsuarioList(ListView):
+    model = User
+
+class UsuarioCreate(CreateView):
+    model = User
+    form_class = SignUpForm
+
+    def form_valid(self, form):
+        user = User.objects.create_user(form.cleaned_data['username'],
+                                        form.cleaned_data['email'],
+                                        form.cleaned_data['password'])
+        user.is_active = True
+        user.save()
+
+class UsuarioUpdate(CreateView):
+    model = User
+
+class UsuarioDelete(CreateView):
+    model = User

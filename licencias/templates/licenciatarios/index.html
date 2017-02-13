@@ -80,8 +80,10 @@
             </ul>
           </div>
           <div class="widget-body">
+            <button type="button" class="btn btn-primary"><i class="ion-plus-round mr-5"></i>Nueva licencia</button>
+
             <div class="table-responsive">
-              <table class="table mb-0">
+              <table class="table mb-0 table-hover">
                 <thead>
                   <tr>
                     <th>#</th>
@@ -99,7 +101,10 @@
                     <td>{{ licenciatario.nombre_comercial }}</td>
                     <td class="text-center">{{ licenciatario.expedicion_fecha }}</td>
                     <td class="text-center"><span class="label label-outline label-success"><a target='_blank' href="{% url 'licenciatarios:print-licencia' licenciatario.pk %}">Imprimir</a></span></td>
-                    <td class="text-center text-danger"><i class="ion-compose"></i></td>
+                    <td class="text-center">
+                      <a href="{% url 'licenciatarios:licencia-update' licenciatario.pk %}"><i class="ion-compose"></i></a>
+                      <a href="{% url 'licenciatarios:licencia-delete' licenciatario.pk %}"><i class="ion-ios-close-outline"></i></a>
+                    </td>
                   </tr>
                     {% endfor %}
                   {% endif %}
