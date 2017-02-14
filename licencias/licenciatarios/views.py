@@ -122,17 +122,23 @@ class UsuarioList(ListView):
 
 class UsuarioCreate(CreateView):
     model = User
-    form_class = SignUpForm
+    fields = ['username', 'email', 'password']
+    success_url = reverse_lazy('licenciatarios:usuario')
 
     def form_valid(self, form):
         user = User.objects.create_user(form.cleaned_data['username'],
                                         form.cleaned_data['email'],
                                         form.cleaned_data['password'])
         user.is_active = True
-        user.save()
+        # user.save()
+        return super(UsuarioCreate, self).form_valid(form)
 
-class UsuarioUpdate(CreateView):
+class UsuarioUpdate(UpdateView):
     model = User
+    fields = ['username', 'email', 'password']
+    success_url = reverse_lazy('licenciatarios:usuario')
 
-class UsuarioDelete(CreateView):
+
+class UsuarioDelete(DeleteView):
     model = User
+    success_url = reverse_lazy('licenciatarios:usuario')

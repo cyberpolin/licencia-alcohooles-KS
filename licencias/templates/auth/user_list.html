@@ -43,8 +43,8 @@
                       <a href=""><i class="ion-ios-close-outline"></i></a>
                     </td>
                     <td class="text-center">
-                      <a href=""><i class="ion-compose"></i></a>
-                      <a href=""><i class="ion-ios-close-outline"></i></a>
+                      <a href="{% url 'licenciatarios:usuario-update' user.pk %}"><i class="ion-compose"></i></a>
+                      <a href="{% url 'licenciatarios:usuario-delete' user.pk %}"><i class="ion-ios-close-outline"></i></a>
                     </td>
                     <td class="text-center">
                       {% if user.is_active %}
