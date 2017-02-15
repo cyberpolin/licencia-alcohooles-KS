@@ -1,5 +1,6 @@
 from django import forms
 from django.forms import ModelForm, Textarea, TextInput, HiddenInput
+from django.contrib.auth.models import User
 from .models import Licenciatarios
 
 
@@ -12,6 +13,8 @@ def add_css_classes(f, **kwargs):
     if field and 'class' not in field.widget.attrs:
         field.widget.attrs['class'] = 'form-control'
     return field
+
+
 
 class AddLicenciatario(ModelForm):
     formafield_callback = add_css_classes

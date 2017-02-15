@@ -125,14 +125,12 @@
             <div class="media mt-0">
               <div class="media-left avatar"><img src="{% static 'build/images/users/04.jpg' %}" alt="" class="media-object img-circle"><span class="status bg-success"></span></div>
               <div class="media-right media-middle pl-0">
-                <p class="fs-12 mb-0">Hola, Juan</p>
+                <p class="fs-12 mb-0">Hola, {{ user.username }}</p>
               </div>
             </div></a>
           <ul aria-labelledby="dropdownMenu2" class="dropdown-menu dropdown-menu-right animated fadeInUp icon">
-            <li><a href="profile.html"><i class="ion-person mr-5"></i> Mi cuenta</a></li>
-            <li><a href="email-inbox.html"><i class="ion-filing mr-5"></i> Mensajes</a></li>
-            <li><a href="profile.html"><i class="ion-gear-b mr-5"></i> Configuración</a></li>
-            <li><a href="login.html"><i class="ion-unlocked mr-5"></i> Logout</a></li>
+            <li><a href="{% url 'licenciatarios:config'%}"><i class="ion-gear-b mr-5"></i> Configuración</a></li>
+            <li><a href="{% url 'licenciatarios:logout-view'%}"><i class="ion-unlocked mr-5"></i> Logout</a></li>
           </ul>
         </li>
 

@@ -11,12 +11,14 @@ from datetime import date
 from .forms import AddLicenciatario
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, View
 from django.urls import reverse_lazy
 
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
+@login_required
 def index(request):
     latest_licenciatarios = list(Licenciatarios.objects.order_by('-id'))
 
@@ -30,9 +32,11 @@ def index(request):
     }
     return render(request, 'licenciatarios/index.html', ctx)
 
+@login_required
 def show_licencia(request, id):
     return print_licencia(id)
 
+@login_required
 def print_licencia(id):
 
     l = Licenciatarios.objects.get(pk=id)
@@ -73,7 +77,7 @@ def print_licencia(id):
     p.save()
 
     return response
-
+@login_required
 def licencia_nueva(request):
 
     current_id = Licenciatarios.objects.latest('folio')
@@ -93,7 +97,7 @@ def licencia_nueva(request):
         ctx['title'] = 'Agrega un licenciatario'
         return render(request, 'licenciatarios/add-licenciatario.html', ctx)
 
-
+@login_required
 def licencia_edit(request, id):
     licenciatario = Licenciatarios.objects.get(pk=id)
     ctx = {}
@@ -102,25 +106,26 @@ def licencia_edit(request, id):
     return render(request, 'licenciatarios/add-licenciatario.html', ctx)
 
 
-class LicenciaCreate(CreateView):
+class LicenciaCreate(LoginRequiredMixin, CreateView):
     model = Licenciatarios
     form_class = AddLicenciatario
     template_name='licenciatarios/add-licenciatario.html'
     success_url = reverse_lazy('licenciatarios:index')
 
-class LicenciaUpdate(UpdateView):
+class LicenciaUpdate(LoginRequiredMixin, UpdateView):
+
     model = Licenciatarios
     form_class = AddLicenciatario
     success_url = reverse_lazy('licenciatarios:index')
-class LicenciaDelete(DeleteView):
+class LicenciaDelete(LoginRequiredMixin, DeleteView):
     model = Licenciatarios
     success_url = reverse_lazy('licenciatarios:index')
 
 
-class UsuarioList(ListView):
+class UsuarioList(LoginRequiredMixin, ListView):
     model = User
 
-class UsuarioCreate(CreateView):
+class UsuarioCreate(LoginRequiredMixin, CreateView):
     model = User
     fields = ['username', 'email', 'password']
     success_url = reverse_lazy('licenciatarios:usuario')
@@ -133,12 +138,44 @@ class UsuarioCreate(CreateView):
         # user.save()
         return super(UsuarioCreate, self).form_valid(form)
 
-class UsuarioUpdate(UpdateView):
+class UsuarioUpdate(LoginRequiredMixin, UpdateView):
     model = User
     fields = ['username', 'email', 'password']
     success_url = reverse_lazy('licenciatarios:usuario')
 
 
-class UsuarioDelete(DeleteView):
+class UsuarioDelete(LoginRequiredMixin, DeleteView):
     model = User
     success_url = reverse_lazy('licenciatarios:usuario')
+
+class ConfigUpdate(LoginRequiredMixin, UpdateView):
+    model = User
+    fields = ['username', 'email', 'password']
+    success_url = reverse_lazy('licenciatarios:usuario')
+
+
+class LoginView(View):
+    success_url = reverse_lazy('licenciatarios:usuario')
+
+    def post(self, request):
+        username = request.POST['username']
+        password = request.POST['password']
+        print('username')
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+
+                return HttpResponseRedirect('/form')
+            else:
+                return HttpResponse("Inactive user.")
+        else:
+            return HttpResponseRedirect(settings.LOGIN_URL)
+
+        return HttpResponseRedirect('/form')
+
+class LogoutView(View):
+    def get(self, request):
+        logout(request)
+        return HttpResponseRedirect(settings.LOGIN_URL)
