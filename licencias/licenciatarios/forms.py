@@ -3,9 +3,14 @@ from django.forms import ModelForm, Textarea, TextInput, HiddenInput
 from django.contrib.auth.models import User
 from .models import Licenciatarios
 
+next_id = '10100'
+try:
+    if Licenciatarios.objects.latest('folio').exists():
+        current_id = Licenciatarios.objects.latest('folio')
+        next_id = int(current_id.folio) + 1
+except:
+    print('sadfa')
 
-current_id = Licenciatarios.objects.latest('folio')
-next_id = int(current_id.folio) + 1
 
 
 def add_css_classes(f, **kwargs):

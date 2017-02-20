@@ -79,10 +79,13 @@ def print_licencia(id):
     return response
 @login_required
 def licencia_nueva(request):
-
-    current_id = Licenciatarios.objects.latest('folio')
-    next_id = int(current_id.folio) + 1
-
+    next_id = '10100'
+    try:
+        if Licenciatarios.objects.latest('folio').exists():
+            current_id = Licenciatarios.objects.latest('folio')
+            next_id = int(current_id.folio) + 1
+    except:
+        print('No existia la licencia')
     ctx = {}
     if request.method == 'POST':
         form =  AddLicenciatario(request.POST)

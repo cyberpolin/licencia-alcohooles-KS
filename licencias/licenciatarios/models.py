@@ -2,11 +2,11 @@ from django.db import models
 from django.contrib import admin
 from django.utils.html import format_html
 from django.urls import reverse
-# from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 
-# class configuraciones(models.Model):
-#     firma_autoridad = models.CharField(max_length=200)
-#     periodo_valido = models.CharField(max_length=200)
+class configuraciones(models.Model):
+    firma_autoridad = models.CharField(max_length=200)
+    periodo_valido = models.CharField(max_length=200)
 
 # Create your models here.
 class Licenciatarios(models.Model):
@@ -25,16 +25,16 @@ class Licenciatarios(models.Model):
     rfc = models.CharField(max_length=200)
     actividad = models.CharField(max_length=200)
     horario = models.CharField(max_length=200)
-    # expedicion_fecha = models.DateField()
-    # vencimiento_fecha = models.DateField()
+    expedicion_fecha = models.DateField()
+    vencimiento_fecha = models.DateField()
     # user = models.ForeignKey(User, related_name='created_by')
-    # created = models.DateTimeField(auto_now_add=True)
-    # updated = models.DateTimeField(auto_now=True)
-    #
-    #
-    # def get_absolute_url(self):
-    #     return reverse('licenciatarios:index')
-    #     # return reverse('licencia-detail', kwargs={'pk': self.pk})
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+
+    def get_absolute_url(self):
+        return reverse('licenciatarios:index')
+        # return reverse('licencia-detail', kwargs={'pk': self.pk})
 
 
     def __str__(self):
